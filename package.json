@@ -1,0 +1,22 @@
+{
+  "name": "move-forms-creator",
+  "version": "1.0.0",
+  "description": "simple app to create move out forms",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kohrak/move-forms-creator.git"
+  },
+  "author": "Kohrak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kohrak/move-forms-creator/issues"
+  },
+  "homepage": "https://github.com/Kohrak/move-forms-creator#readme",
+  "dependencies": {
+    "xlsx-populate": "^1.14.0"
+  }
+}
