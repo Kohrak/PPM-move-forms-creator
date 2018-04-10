@@ -1,5 +1,5 @@
 const writeBlue = require("./writeBlue");
-
+var str = "Tenant: \n clean mess \n broken chair"
 let data = {
   "name": "pepito",
   "surname": "perez",
@@ -8,7 +8,7 @@ let data = {
   "key": "yes",
   "car": "no",
   "laundry": "yes",
-  "agentmsg": "no charge"
+  "agentmsg": str
 };
 
 writeBlue(data);
