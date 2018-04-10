@@ -17,7 +17,7 @@ function writeBlue(info){
         //map excel sheet cells
         let map = {
           "name": workbook.sheet("Sheet1").cell("B4"),
-          "surname": workbook.sheet("Sheet1").cell("B5"),
+          "date": workbook.sheet("Sheet1").cell("B5"),
           "cluster": workbook.sheet("Sheet1").cell("B6"),
           "room": workbook.sheet("Sheet1").cell("B7"),
           "key": workbook.sheet("Sheet1").cell("B8"),
@@ -27,7 +27,6 @@ function writeBlue(info){
         }
           // assigns values from info to the cells in map
           map.name.value(info.name);
-          map.surname.value(info.surname);
           map.cluster.value(info.cluster);
           map.room.value(info.room);
           map.key.value(info.key);
