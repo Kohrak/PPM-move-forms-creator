@@ -1,10 +1,46 @@
-<form action="/" method="POST">
-    <input type="text" name="info[name]" placeholder="resident name" >
-    <input type="text" name="info[cluster]" placeholder="cluster" >
-    <input type="text" name="info[room]" placeholder="room" >
-    <input type="text" name="info[key]" placeholder="key returned?" >
-    <input type="text" name="info[car]" placeholder="car park fob returned?" >
-    <input type="text" name="info[laundry]" placeholder="laundry card" >
-    <textarea name="info[agentmsg]" placeholder="agent msg"></textarea>
-    <button>submit</button>
-</form>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Move out forms Creator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+    <h1 class="text-center">Move out form creator</h1>
+    <form action="/" method="POST">
+      <div class="form-group">
+        <label>Resident Name</label>
+        <input class="form-control" type="text" name="info[name]" placeholder="resident name" >
+      </div>
+      <div class="form-group">
+        <label>Cluster</label>
+        <input class="form-control" type="number" name="info[cluster]" placeholder="cluster" >
+      </div>
+      <div class="form-group">
+        <label>Room</label>
+        <input class="form-control" type="number" name="info[room]" placeholder="room" >
+      </div>
+      <div class="form-group">
+        <label>Key Returned?</label>
+        <input class="form-control" type="text" name="info[key]" placeholder="key returned?">
+      </div>
+      <div class="form-group">
+        <label>Car park fob returned?</label>
+        <input class="form-control" type="text" name="info[car]" placeholder="car park fob returned?" >
+      </div>
+      <div class="form-group">
+        <label>Laundry Card Returned?</label>
+        <input class="form-control" type="text" name="info[laundry]" placeholder="laundry card" >
+      </div>
+      <div class="form-group">
+        <label>Agent:</label>
+        <textarea class="form-control" name="info[agentmsg]" placeholder="agent msg" rows="10"></textarea>
+      </div>
+        <button class="btn btn-default">submit</button>
+    </form>
+
+  </div>
+  </body>
+</html>
