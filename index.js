@@ -3,8 +3,8 @@ const express = require("express"),
       writeBlue = require("./writeBlue"),
       writeYellow = require("./writeYellow"),
       app = express();
-
-app.set("view engine", "ejs"); 
+const PORT = process.env.PORT || 3000;
+app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/", (req, res) => {
@@ -14,9 +14,9 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
     writeBlue(req.body.info);
     writeYellow(req.body.info);
-    res.send(req.body.info);
+    res.redirect("/");
 })
 
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(PORT, process.env.IP, function(){
     console.log("Server Started");
 })
