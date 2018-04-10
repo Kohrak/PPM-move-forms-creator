@@ -1,4 +1,5 @@
 const writeBlue = require("./writeBlue");
+const writeYellow = require("./writeYellow");
 var str = "Tenant: \n clean mess \n broken chair"
 let data = {
   "name": "pepito",
@@ -12,3 +13,4 @@ let data = {
 };
 
 writeBlue(data);
+writeYellow(data);

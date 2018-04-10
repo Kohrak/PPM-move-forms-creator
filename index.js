@@ -1,6 +1,7 @@
 const express = require("express"),
       bodyParser = require("body-parser"),
       writeBlue = require("./writeBlue"),
+      writeYellow = require("./writeYellow"),
       app = express();
 
 app.set("view engine", "ejs"); 
@@ -12,6 +13,7 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
     writeBlue(req.body.info);
+    writeYellow(req.body.info);
     res.send(req.body.info);
 })
 
