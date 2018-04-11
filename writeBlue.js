@@ -24,7 +24,7 @@ function writeBlue(info, dateval, download){
           map.car.value(info.car);
           map.laundry.value(info.laundry);
           map.agentmsg.value(info.agentmsg);
-          let name = info.cluster + "." + info.room +  "-Cleaning-" + dateval.replace(/[/]/g, ".");
+          let name = info.cluster + "." + info.room +  " Cleaning " + dateval.replace(/[/]/g, ".");
           // Log the value.
           
           return workbook.toFileAsync('./out/' + name + '.xlsx');
