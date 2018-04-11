@@ -1,5 +1,6 @@
 const writeBlue = require("./writeBlue");
 const writeYellow = require("./writeYellow");
+const getDate = require("./getDate")
 var str = "Tenant: \n clean mess \n broken chair"
 let data = {
   "name": "pepito",
@@ -12,5 +13,5 @@ let data = {
   "agentmsg": str
 };
 
-writeBlue(data);
-writeYellow(data);
+writeBlue(data, getDate());
+writeYellow(data, getDate());

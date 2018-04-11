@@ -1,17 +1,7 @@
 const XlsxPopulate = require('xlsx-populate');
 const maintenance = ('./templates/maintenance.xlsx');
-// let data = {
-//   "name": "pepito",
-//   "surname": "perez",
-//   "cluster": "29",
-//   "room": "7",
-//   "key": "yes",
-//   "car": "no",
-//   "laundry": "yes",
-//   "agentmsg": "no charge"
-// }
 
-function writeYellow(info){
+function writeYellow(info, dateval){
     XlsxPopulate.fromFileAsync(maintenance)
       .then(workbook => {
         //map excel sheet cells
@@ -22,14 +12,13 @@ function writeYellow(info){
           "agentmsg": workbook.sheet("Sheet2").cell("A2")
         }
           // assigns values from info to the cells in map
+          map.date.value(dateval);
           map.cluster.value(info.cluster);
           map.room.value(info.room);
           map.agentmsg.value(info.agentmsg);
-          let name = info.cluster + "." + info.room +  " Maintenance todaysDate"
+          let name = info.cluster + "." + info.room +  " Maintenance " + dateval.replace(/[/]/g, ".");
           // Log the value.
-          
-          console.log(info);
-          
+
           return workbook.toFileAsync('./out/' + name + '.xlsx');
       })
       .catch(err => console.error(err));
