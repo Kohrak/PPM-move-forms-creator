@@ -5,11 +5,14 @@ const express = require("express"),
       getDate = require("./getDate"),
       zipFolder = require('zip-folder'),
       fs = require('fs'),
+      autocsv = require('./autocsv'),
+      fileUpload = require('express-fileupload'),
       app = express();
 
 const PORT = process.env.PORT || 3000;
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(fileUpload());
 
 app.get("/", (req, res) => {
     res.render("index", {date: getDate()})
@@ -30,6 +33,23 @@ app.get("/download", zip, (req, res) => {
                     emptyout('./out/');
                 }
             });
+})
+
+//csv input modes
+app.get("/csv", (req, res) => {
+    res.render("csv");
+})
+
+app.post("/csv", (req, res) => {
+    let inputfile = req.files.datacsv;
+    inputfile.mv('./input/input.csv', (err) => {
+        if (err){
+            res.send("oh no");
+        } else {
+            autocsv('./input/input.csv');
+            res.redirect("/");
+        }
+    })
 })
 
 function zip(req, res, next){

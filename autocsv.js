@@ -13,14 +13,16 @@ const csvToJson = require('convert-csv-to-json');
 //   "laundry": "yes",
 //   "agentmsg": str
 // };
+function autocsv(input){
+  let data = csvToJson.getJsonFromCsv(input);
+  data.forEach((obj) => {
+    obj.name = obj.name + obj.surname;
+    writeBlue(obj, getDate());
+    writeYellow(obj, getDate());
+  })
+}
 
-let data = csvToJson.getJsonFromCsv("./input/input.csv");
-data.forEach((obj) => {
-  obj.name = obj.name + obj.surname;
-  writeBlue(obj, getDate());
-  writeYellow(obj, getDate());
-})
-
+module.exports = autocsv
 // writeBlue(data, getDate());
 // writeYellow(data, getDate());
 

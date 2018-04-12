@@ -20,6 +20,7 @@
     "convert-csv-to-json": "0.0.13",
     "ejs": "^2.5.8",
     "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
     "xlsx-populate": "^1.14.0",
     "zip-folder": "^1.0.0"
   }
