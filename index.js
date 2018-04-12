@@ -64,7 +64,6 @@ function emptyout(path){
     });
 }
 
-
 app.listen(PORT, process.env.IP, function(){
     console.log("Server Started");
 })
