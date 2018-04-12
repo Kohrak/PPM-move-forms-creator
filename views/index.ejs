@@ -8,43 +8,48 @@
   </head>
   <body>
     <div class="container">
-    <h1 class="text-center">Move out form creator</h1>
-    <form action="/" method="POST">
-      <div class="form-group">
-        <label>Date</label>
-        <input class="form-control" type="text" name="dateval" value=<%= date %> >
+      <h1 class="text-center">Move out form creator</h1>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <form action="/" method="POST">
+            <div class="form-group">
+              <label>Date</label>
+              <input class="form-control" type="text" name="dateval" value=<%= date %> >
+            </div>
+            <div class="form-group">
+              <label>Resident Name</label>
+              <input class="form-control" type="text" name="info[name]" placeholder="resident name" >
+            </div>
+            <div class="form-group form-inline">
+              <label>Cluster</label>
+              <input class="form-control" type="number" name="info[cluster]" placeholder="cluster" required>
+              <label>Room</label>
+              <input class="form-control" type="number" name="info[room]" placeholder="room" required>
+            </div>
+            <div class="form-group">
+              <label>Key Returned?</label>
+              <input class="form-control" type="text" name="info[key]" placeholder="Yes/No">
+            </div>
+            <div class="form-group">
+              <label>Car park fob returned?</label>
+              <input class="form-control" type="text" name="info[car]" placeholder="Yes/No/Na" >
+            </div>
+            <div class="form-group">
+              <label>Laundry Card Returned?</label>
+              <input class="form-control" type="text" name="info[laundry]" placeholder="Yes/No/Na" >
+            </div>
+            <div class="form-group">
+              <label>Agent:</label>
+              <textarea class="form-control" name="info[agentmsg]" placeholder="agent report" rows="5"></textarea>
+            </div>
+              <button class="btn btn-success text-center">Create</button>
+          </form>
+        </div>
+        <div class="col-md-3 text-center">
+          <a href="/download" class="btn btn-primary">Download files</a>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Resident Name</label>
-        <input class="form-control" type="text" name="info[name]" placeholder="resident name" >
-      </div>
-      <div class="form-group">
-        <label>Cluster</label>
-        <input class="form-control" type="number" name="info[cluster]" placeholder="cluster" >
-      </div>
-      <div class="form-group">
-        <label>Room</label>
-        <input class="form-control" type="number" name="info[room]" placeholder="room" >
-      </div>
-      <div class="form-group">
-        <label>Key Returned?</label>
-        <input class="form-control" type="text" name="info[key]" placeholder="key returned?">
-      </div>
-      <div class="form-group">
-        <label>Car park fob returned?</label>
-        <input class="form-control" type="text" name="info[car]" placeholder="car park fob returned?" >
-      </div>
-      <div class="form-group">
-        <label>Laundry Card Returned?</label>
-        <input class="form-control" type="text" name="info[laundry]" placeholder="laundry card" >
-      </div>
-      <div class="form-group">
-        <label>Agent:</label>
-        <textarea class="form-control" name="info[agentmsg]" placeholder="agent msg" rows="10"></textarea>
-      </div>
-        <button class="btn btn-default">submit</button>
-    </form>
-        <a href="/download" class="btn btn-primary">Download files</a>
+    
 
   </div>
   </body>
