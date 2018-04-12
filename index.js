@@ -30,7 +30,6 @@ app.get("/download", zip, (req, res) => {
             res.send("something went wrong")
         } else {
             deleteFile('./zip/result.zip');
-            deleteFile('./input/input.csv');
             emptyout('./out/');
         }
     });
@@ -48,6 +47,7 @@ app.post("/csv", (req, res) => {
             res.send("oh no");
         } else {
             autocsv('./input/input.csv');
+            deleteFile('./input/input.csv');
             res.redirect("/");
         }
     })
