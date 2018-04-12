@@ -42,8 +42,8 @@ function zip(req, res, next){
     });
 }
 
-function deleteFile (file) { 
-    fs.unlink(file, function (err) {
+function deleteFile (file){ 
+    fs.unlink(file, (err) => {
         if (err) {
             console.error(err.toString());
         } else {
@@ -53,16 +53,15 @@ function deleteFile (file) {
 }
 
 function emptyout(path){
-    fs.readdir(path, function(err, items) {
-        if(err){
-            console.log("something went wrong")
-        } else {
-            for (var i=0; i<items.length; i++) {
-            deleteFile(path + items[i]);
+    fs.readdir(path, (err, items) => {
+            if(err){
+                console.log("something went wrong")
+            } else {
+                for (var i=0; i<items.length; i++) {
+                deleteFile(path + items[i]);
+            }
         }
-
-    }
-});
+    });
 }
 
 
