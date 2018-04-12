@@ -4,6 +4,7 @@ const express = require("express"),
       writeYellow = require("./writeYellow"),
       getDate = require("./getDate"),
       zipFolder = require('zip-folder'),
+      fs = require('fs'),
       app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -20,19 +21,50 @@ app.post("/", (req, res) => {
     res.redirect("/");
 })
 
-app.get("/zip", (req, res) => {
+app.get("/download", zip, (req, res) => {
+    res.download("./zip/result.zip", (err) => {
+                if (err){
+                    res.send("something went wrong")
+                } else {
+                    deleteFile('./zip/result.zip');
+                    emptyout('./out/');
+                }
+            });
+})
+
+function zip(req, res, next){
     zipFolder('./out', './zip/result.zip', (err) => {
         if(err){
             res.send("cant zip files")
         } else {
-        res.download("./zip/result.zip", (err) => {
-                if (err){
-                    res.send("something went wrong")
-                } 
-            });
+            next();
         }
     });
-})
+}
+
+function deleteFile (file) { 
+    fs.unlink(file, function (err) {
+        if (err) {
+            console.error(err.toString());
+        } else {
+            console.warn(file + ' deleted');
+        }
+    });
+}
+
+function emptyout(path){
+    fs.readdir(path, function(err, items) {
+        if(err){
+            console.log("something went wrong")
+        } else {
+            for (var i=0; i<items.length; i++) {
+            deleteFile(path + items[i]);
+        }
+
+    }
+});
+}
+
 
 app.listen(PORT, process.env.IP, function(){
     console.log("Server Started");
