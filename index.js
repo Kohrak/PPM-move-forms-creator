@@ -26,13 +26,14 @@ app.post("/", (req, res) => {
 
 app.get("/download", zip, (req, res) => {
     res.download("./zip/result.zip", (err) => {
-                if (err){
-                    res.send("something went wrong")
-                } else {
-                    deleteFile('./zip/result.zip');
-                    emptyout('./out/');
-                }
-            });
+        if (err){
+            res.send("something went wrong")
+        } else {
+            deleteFile('./zip/result.zip');
+            deleteFile('./input/input.csv');
+            emptyout('./out/');
+        }
+    });
 })
 
 //csv input modes
