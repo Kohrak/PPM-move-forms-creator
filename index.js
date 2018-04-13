@@ -8,6 +8,7 @@ const express = require("express"),
       autocsv = require('./local/autocsv'),
       writeBlue = require("./local/writeBlue"),
       writeYellow = require("./local/writeYellow"),
+      deleteFile = require("./local/deleteFile"),
       app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -60,16 +61,6 @@ function zip(req, res, next){
             res.send("cant zip files")
         } else {
             next();
-        }
-    });
-}
-
-function deleteFile (file){ 
-    fs.unlink(file, (err) => {
-        if (err) {
-            console.error(err.toString());
-        } else {
-            console.warn(file + ' deleted');
         }
     });
 }
