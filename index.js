@@ -1,11 +1,11 @@
 const express = require("express"),
       bodyParser = require("body-parser"),
-      writeBlue = require("./writeBlue"),
-      writeYellow = require("./writeYellow"),
-      getDate = require("./getDate"),
+      writeBlue = require("./local/writeBlue"),
+      writeYellow = require("./local/writeYellow"),
+      getDate = require("./local/getDate"),
       zipFolder = require('zip-folder'),
       fs = require('fs'),
-      autocsv = require('./autocsv'),
+      autocsv = require('./local/autocsv'),
       fileUpload = require('express-fileupload'),
       app = express();
 

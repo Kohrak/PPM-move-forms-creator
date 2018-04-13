@@ -1,7 +1,7 @@
 const XlsxPopulate = require('xlsx-populate');
 const cleaning = ('./templates/cleaning.xlsx');
 
-function writeBlue(info, dateval, download){
+function writeBlue(info, dateval){
     XlsxPopulate.fromFileAsync(cleaning)
       .then(workbook => {
         //map excel sheet cells
