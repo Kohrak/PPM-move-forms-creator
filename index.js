@@ -9,6 +9,7 @@ const express = require("express"),
       writeBlue = require("./local/writeBlue"),
       writeYellow = require("./local/writeYellow"),
       deleteFile = require("./local/deleteFile"),
+      emptyFolder = require("./local/emptyFolder"),
       app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -31,8 +32,8 @@ app.get("/download", zip, (req, res) => {
         if (err){
             res.send("something went wrong")
         } else {
-            deleteFile('./zip/result.zip');
-            emptyout('./out/');
+            emptyFolder('./zip/');
+            emptyFolder('./out/');
         }
     });
 })
@@ -49,7 +50,7 @@ app.post("/csv", (req, res) => {
             res.send("oh no");
         } else {
             autocsv('./input/input.csv');
-            deleteFile('./input/input.csv');
+            emptyFolder('./input/');
             res.redirect("/");
         }
     })
@@ -61,18 +62,6 @@ function zip(req, res, next){
             res.send("cant zip files")
         } else {
             next();
-        }
-    });
-}
-
-function emptyout(path){
-    fs.readdir(path, (err, items) => {
-            if(err){
-                console.log("something went wrong")
-            } else {
-                for (var i=0; i<items.length; i++) {
-                deleteFile(path + items[i]);
-            }
         }
     });
 }
