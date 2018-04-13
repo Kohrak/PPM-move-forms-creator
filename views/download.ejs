@@ -1,0 +1,12 @@
+<h1>List of files</h1>
+<% if (files.length > 0){ %>
+<ul>
+    <% files.forEach((element) => { %>
+        <li><%= element %></li>
+    <% }) %>
+</ul>
+<% } else { %>
+    <p>There is no files to show right now, generate one</p>
+<% } %>
+
+<a href="/download/exec" class="btn btn-primary">Get files</a>

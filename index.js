@@ -17,6 +17,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(fileUpload());
 
+//routes Blue and Yellow forms
 app.get("/", (req, res) => {
     res.render("index", {date: getDate()})
 })
@@ -27,7 +28,19 @@ app.post("/", (req, res) => {
     res.redirect("/");
 })
 
-app.get("/download", zip, (req, res) => {
+//Download routes
+
+app.get("/download", (req, res) => {
+    fs.readdir('./out/', (err, items) => {
+        if(err){
+            res.send("something went wrong");
+        } else {
+            res.render("download", {files: items});
+        }
+    })
+})
+
+app.get("/download/exec", zip, (req, res) => {
     res.download("./zip/result.zip", (err) => {
         if (err){
             res.send("something went wrong")
@@ -37,6 +50,7 @@ app.get("/download", zip, (req, res) => {
         }
     });
 })
+
 
 //csv input modes
 app.get("/csv", (req, res) => {
