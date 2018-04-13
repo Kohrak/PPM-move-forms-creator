@@ -1,12 +1,57 @@
-<h1>List of files</h1>
-<% if (files.length > 0){ %>
-<ul>
-    <% files.forEach((element) => { %>
-        <li><%= element %></li>
-    <% }) %>
-</ul>
-<% } else { %>
-    <p>There is no files to show right now, generate one</p>
-<% } %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Move out forms Creator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+    <body>
+        <div class="container">
+            <h1 class="text-center">Download</h1>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-default">
+                    <div class="panel-heading">List of files</div>
+                     <div class="panel-body">
+                        <p>Here is the list of all the forms you have created, press "get files" to download them but please note
+                        that once you do, the files will be deleted from the server</p>
+                      </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>File Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if (files.length > 0){ %>
+                                    <% files.forEach((element) => { %>
+                                    <tr>
+                                       <td><%= element %></td>   
+                                    </tr>
+                                    <% }) %>
+                                    <tr>
+                                        <td>
+                                            <a href="/download/exec" target="_blank" class="btn btn-primary">
+                                            Get files
+                                            </a>
+                                            </td>
+                                    </tr>
+                                    
+                                <% } else { %>
+                                <tr>
+                                    <td><a href="/">
+                                        There is no files to show right now, click to create one
+                                    </a></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                    <a class="btn btn-default" href="/">Go back<a/>  
+                </div>
+            </div>
 
-<a href="/download/exec" class="btn btn-primary">Get files</a>
+        </div>
+  </body>
+</html>
