@@ -8,6 +8,8 @@ const express = require("express"),
       autocsv = require('./local/autocsv'),
       writeBlue = require("./local/writeBlue"),
       writeYellow = require("./local/writeYellow"),
+      writeGreen = require("./local/writeGreen"),
+      writeBuff = require("./local/writeBuff"),
       deleteFile = require("./local/deleteFile"),
       emptyFolder = require("./local/emptyFolder"),
       app = express();
@@ -17,15 +19,30 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(fileUpload());
 
-//routes Blue and Yellow forms
 app.get("/", (req, res) => {
-    res.render("index", {date: getDate()})
+    res.redirect("/room");
 })
 
-app.post("/", (req, res) => {
+//routes Blue and Yellow forms
+app.get("/room", (req, res) => {
+    res.render("room", {date: getDate()})
+})
+
+app.post("/room", (req, res) => {
     writeBlue(req.body.info, req.body.dateval);
     writeYellow(req.body.info, req.body.dateval);
-    res.redirect("/");
+    res.redirect("/room");
+})
+
+//routes for Buff and Green forms
+app.get("/kitchen", (req, res) => {
+    res.render("kitchen", {date: getDate()})
+})
+
+app.post("/kitchen", (req, res) => {
+    writeGreen(req.body.info, req.body.dateval);
+    writeBuff(req.body.info, req.body.dateval);
+    res.redirect("/kitchen");
 })
 
 //Download routes
