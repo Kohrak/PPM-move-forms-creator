@@ -1,20 +1,10 @@
-const writeBlue = require("./writeBlue");
-const writeYellow = require("./writeYellow");
-const getDate = require("./getDate");
-const parser = require('xml2json');
-const fs = require('fs');
-const emptyFolder = require("./emptyFolder");
-// var str = "Tenant: \n clean mess \n broken chair"
-// let data = {
-//   "name": "pepito",
-//   "surname": "perez",
-//   "cluster": "29",
-//   "room": "7",
-//   "key": "yes",
-//   "car": "no",
-//   "laundry": "yes",
-//   "agentmsg": str
-// };
+const parser = require('xml2json'),
+      fs = require('fs'),
+      writeBlue = require("./writeBlue"),
+      writeYellow = require("./writeYellow"),
+      getDate = require("./getDate"),
+      emptyFolder = require("./emptyFolder");
+
 function autoxml(input){
   fs.readFile(input, function(err, outp) {
     if (err){
@@ -33,8 +23,7 @@ function autoxml(input){
 }
 
 module.exports = autoxml
-// writeBlue(data, getDate());
-// writeYellow(data, getDate());
+
 
 
  
