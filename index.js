@@ -1,7 +1,7 @@
 const express = require("express"),
       bodyParser = require("body-parser"),
       fileUpload = require('express-fileupload'),
-      //autocsv = require('./local/autocsv'),
+      autoxml = require('./local/autoxml'),
       app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -15,22 +15,21 @@ require("./routes/downloadRoutes")(app);
 
 
 //csv input modes
-// app.get("/csv", (req, res) => {
-//     res.render("csv");
-// })
+app.get("/xml", (req, res) => {
+    res.render("xml");
+})
 
-// app.post("/csv", (req, res) => {
-//     let inputfile = req.files.datacsv;
-//     inputfile.mv('./input/input.csv', (err) => {
-//         if (err){
-//             res.send("oh no");
-//         } else {
-//             autocsv('./input/input.csv');
-//             emptyFolder('./input/');
-//             res.redirect("/");
-//         }
-//     })
-// })
+app.post("/xml", (req, res) => {
+    let inputfile = req.files.dataxml;
+    inputfile.mv('./input/input.xml', (err) => {
+        if (err){
+            res.send("oh no");
+        } else {
+            autoxml('./input/input.xml');
+            res.redirect("/");
+        }
+    })
+})
 
 app.listen(PORT, process.env.IP, function(){
     console.log("Server Started");
