@@ -11,7 +11,7 @@ function autoxmlK(input){
       console.log('oh no');
     } else {
       let json = parser.toJson(outp, {object: true});
-      let data = json.residentdata.resident
+      let data = json.kitchendata.kitchen
       data.forEach((obj) => {
         obj.name = obj.name + obj.surname;
         writeGreen(obj, getDate());
