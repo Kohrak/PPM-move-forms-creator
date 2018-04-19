@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kitchendata>
+  <kitchen>
+    <cluster>9</cluster>
+    <agentmsg>agent message</agentmsg>
+  </kitchen>
+  <kitchen>
+    <cluster>9</cluster>
+    <agentmsg>agent message</agentmsg>
+  </kitchen>
+</kitchendata>

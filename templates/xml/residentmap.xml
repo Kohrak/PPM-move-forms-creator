@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<residentdata>
+  <resident>
+    <cluster>9</cluster>
+    <room>9</room>
+    <name>Residentname</name>
+    <surname>residentSurname</surname>
+    <key>yes,no,na</key>
+    <car>yes,no,na</car>
+    <laundry>yes,no,na</laundry>
+    <agentmsg>agent message</agentmsg>
+  </resident>
+  <resident>
+    <cluster>9</cluster>
+    <room>9</room>
+    <name>Residentname</name>
+    <surname>residentSurname</surname>
+    <key>yes,no,na</key>
+    <car>yes,no,na</car>
+    <laundry>yes,no,na</laundry>
+    <agentmsg>agent message</agentmsg>
+  </resident>
+</residentdata>
