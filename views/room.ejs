@@ -41,14 +41,15 @@
         </div>
         <div class="col-md-3 text-center">
           <div>
-            <p>Submit an xml file</p>
+            <p>You can upload an xml file with all the information that you need to input
+            and the app will create the forms "automagically"</p>
+            <p>Just download the template <a href="/download/templates/room">here</a>, open it in excel and save it as xml again</p>
             <form action="/xml/rooms" method="POST" encType="multipart/form-data">
                 <div class="form-group">
                   <input class="form-control" type="file" name="dataxml">                
                 </div>
                 <button class="btn btn-default">Send</button>
             </form>
-            <a href="/download" class="btn btn-primary">Download files</a>
           </div>
         </div>
       </div>
