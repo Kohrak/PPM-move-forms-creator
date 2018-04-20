@@ -1,10 +1,12 @@
 const XlsxPopulate = require('xlsx-populate');
 const cleaning = ('./templates/cleaning.xlsx');
 
+/*The function will take the cleaning template (aka Blue) 
+and return a copy of it with the passed data in the respective cells*/
 function writeBlue(info, dateval, path, next){
     XlsxPopulate.fromFileAsync(cleaning)
       .then(workbook => {
-        //map excel sheet cells
+        //map excel sheet template cells
         let map = {
           "name": workbook.sheet("Sheet1").cell("B4"),
           "date": workbook.sheet("Sheet1").cell("B5"),
@@ -15,7 +17,7 @@ function writeBlue(info, dateval, path, next){
           "laundry": workbook.sheet("Sheet1").cell("B10"),
           "agentmsg": workbook.sheet("Sheet1").cell("B19")
         }
-          // assigns values from info to the cells in map
+          // assign values from info to the cells in map
           map.date.value(dateval);
           map.name.value(info.name);
           map.cluster.value(info.cluster);
@@ -24,9 +26,12 @@ function writeBlue(info, dateval, path, next){
           map.car.value(info.car);
           map.laundry.value(info.laundry);
           map.agentmsg.value(info.agentmsg);
+          // Creates the name using the provided data
+          // format <cluster>.<room> Cleaning dd/mm/yy
           let name = info.cluster + "." + info.room +  " Cleaning " + dateval.replace(/[/]/g, ".");
-          // Log the value.
+          // Write the form in the server file system on the provided path
           workbook.toFileAsync(path + name + '.xlsx').then( () => {
+            //call the callback if provided
             if(next){
               next();
             }

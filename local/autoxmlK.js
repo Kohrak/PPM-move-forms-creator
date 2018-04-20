@@ -5,6 +5,10 @@ const parser = require('xml2json'),
       getDate = require("./getDate"),
       emptyFolder = require("./emptyFolder");
 
+/*The function will take input from xml file, the template for it is provided.
+then it will call the functions to write Buff and Green forms with each
+line of the input*/
+
 function autoxmlK(input, path){
   fs.readFile(input, function(err, outp) {
     if (err){
