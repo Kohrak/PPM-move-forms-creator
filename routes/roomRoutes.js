@@ -13,9 +13,11 @@ module.exports = (app) => {
     })
     
     app.post("/room", (req, res) => {
-        writeBlue(req.body.info, req.body.dateval);
-        writeYellow(req.body.info, req.body.dateval);
-        res.redirect("/room");
-    })
+        writeBlue(req.body.info, req.body.dateval, () => {
+            writeYellow(req.body.info, req.body.dateval, () => {
+                res.redirect("/room");
+            })
+        });
+    });
 
 }
