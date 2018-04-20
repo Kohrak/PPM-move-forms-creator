@@ -3,7 +3,7 @@ const writeBlue = require('../local/writeBlue'),
       fs = require('fs');
       
 describe("When given a move out input", () => {
-    it("creates a form with the provided input", () => {
+    it("creates a form ", (done) => {
          let info = {
           "name": "Jack",
           "date": "Smith",
@@ -14,14 +14,11 @@ describe("When given a move out input", () => {
           "laundry": "Yes",
           "agentmsg": "No charge"
         }
-    writeBlue(info, "01/01/2018", './out/', () => {
-        fs.readdir('./out/', (err, items) => {
-            if(err){
-                console.log("something went wrong")
-            } else {
-                expect(items.length).toBe(1);
-            }
-        })   
-    })   
+    writeBlue(info, "01/01/2018", './spec/out/', () => {
+        let files = fs.readdirSync('./spec/out/');
+        expect(files[0]).toBe("10.2 Cleaning 01.01.2018.xlsx");
+        fs.unlink('./spec/out/' + files[0]);
+        done();
+    }); 
     })
 })
