@@ -13,8 +13,8 @@ module.exports = (app) => {
     })
     
     app.post("/room", (req, res) => {
-        writeBlue(req.body.info, req.body.dateval, () => {
-            writeYellow(req.body.info, req.body.dateval, () => {
+        writeBlue(req.body.info, req.body.dateval, './out/', () => {
+            writeYellow(req.body.info, req.body.dateval, './out/', () => {
                 res.redirect("/room");
             })
         });

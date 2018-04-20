@@ -10,7 +10,7 @@ module.exports = (app) => {
             if (err){
                 res.send("oh no");
             } else {
-                autoxml('./input/input.xml');
+                autoxml('./input/input.xml', './out/');
                 res.redirect("/");
             }
         })
@@ -22,7 +22,7 @@ module.exports = (app) => {
             if (err){
                 res.send("oh no");
             } else {
-                autoxmlK('./input/input.xml');
+                autoxmlK('./input/input.xml', './out/');
                 res.redirect("/");
             }
         })

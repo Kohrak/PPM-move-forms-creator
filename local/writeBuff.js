@@ -1,7 +1,7 @@
 const XlsxPopulate = require('xlsx-populate');
 const maintenance = ('./templates/cleaning-kitchen.xlsx');
 
-function writeBuff(info, dateval, next){
+function writeBuff(info, dateval, path, next){
     XlsxPopulate.fromFileAsync(maintenance)
       .then(workbook => {
         //map excel sheet cells
@@ -17,7 +17,7 @@ function writeBuff(info, dateval, next){
           let name = info.cluster + " Cleaning (kitchen) " + dateval.replace(/[/]/g, ".");
           // Log the value.
 
-          workbook.toFileAsync('./out/' + name + '.xlsx').then( () => {
+          workbook.toFileAsync(path + name + '.xlsx').then( () => {
             if(next){
               next();
             }

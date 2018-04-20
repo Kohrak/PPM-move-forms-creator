@@ -5,7 +5,7 @@ const parser = require('xml2json'),
       getDate = require("./getDate"),
       emptyFolder = require("./emptyFolder");
 
-function autoxmlK(input){
+function autoxmlK(input, path){
   fs.readFile(input, function(err, outp) {
     if (err){
       console.log('oh no');
@@ -14,8 +14,8 @@ function autoxmlK(input){
       let data = json.kitchendata.kitchen
       data.forEach((obj) => {
         obj.name = obj.name + obj.surname;
-        writeGreen(obj, getDate());
-        writeBuff(obj, getDate());
+        writeGreen(obj, getDate(), path);
+        writeBuff(obj, getDate(), path);
       })
       emptyFolder("./input/");
     }

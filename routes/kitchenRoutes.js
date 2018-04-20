@@ -9,8 +9,8 @@ module.exports = (app) => {
     })
     
     app.post("/kitchen", (req, res) => {
-        writeGreen(req.body.info, req.body.dateval, () => {
-            writeBuff(req.body.info, req.body.dateval, () => {
+        writeGreen(req.body.info, req.body.dateval, './out/', () => {
+            writeBuff(req.body.info, req.body.dateval, './out/', () => {
                 res.redirect("/kitchen"); 
             })
         });
