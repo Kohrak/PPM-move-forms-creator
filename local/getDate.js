@@ -1,3 +1,4 @@
+//Simple function to return the current Date
 function getDate(){
     let today = new Date();
     let dd = today.getDate();

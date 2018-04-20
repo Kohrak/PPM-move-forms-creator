@@ -1,5 +1,5 @@
 const fs = require('fs');
-
+//Deletes a file form the server file system
 function deleteFile (file){ 
     fs.unlink(file, (err) => {
         if (err) {
