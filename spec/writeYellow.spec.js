@@ -1,10 +1,10 @@
-const writeBlue = require('../local/writeBlue'),
+const writeYellow = require('../local/writeYellow'),
       XlsxPopulate = require('xlsx-populate'),
       fs = require('fs'),
       specpath = './spec/out/';
       
 describe("When given a move out input", () => {
-    it("creates a blue form with the right name using input data", (done) => {
+    it("creates a yellow form with the right name using input data", (done) => {
          let info = {
           "name": "Jack",
           "cluster": "10",
@@ -14,14 +14,14 @@ describe("When given a move out input", () => {
           "laundry": "Yes",
           "agentmsg": "No charge"
         }
-    writeBlue(info, "01/01/2018", specpath, () => {
+    writeYellow(info, "01/01/2018", specpath, () => {
         let files = fs.readdirSync(specpath);
-        expect(files[0]).toBe("10.2 Cleaning 01.01.2018.xlsx");
+        expect(files[0]).toBe("10.2 Maintenance 01.01.2018.xlsx");
         fs.unlink(specpath + files[0]);
         done();
     }); 
     });
-    it("creates a blue form that contains the data passed in the right places", (done) => {
+    it("creates a yellow form that contains the data passed in the right places", (done) => {
          let info = {
           "name": "Jack",
           "cluster": "10",
@@ -31,18 +31,14 @@ describe("When given a move out input", () => {
           "laundry": "Yes",
           "agentmsg": "No charge"
         }
-    writeBlue(info, "01/01/2018", specpath, () => {
-        XlsxPopulate.fromFileAsync('./spec/out/10.2 Cleaning 01.01.2018.xlsx')
+    writeYellow(info, "01/01/2018", specpath, () => {
+        XlsxPopulate.fromFileAsync('./spec/out/10.2 Maintenance 01.01.2018.xlsx')
         .then(workbook => {
             let p = workbook.sheet('Sheet1');
             let map = {
-                "name": p.cell('B4').value(),
                 "cluster": p.cell('B6').value(),
                 "room": p.cell('B7').value(),
-                "key": p.cell('B8').value(),
-                "car": p.cell('B9').value(),
-                "laundry": p.cell('B10').value(),
-                "agentmsg": p.cell('B19').value()
+                "agentmsg": workbook.sheet('Sheet2').cell('A2').value()
             }
             for (let prop in map){
                 expect(map[prop].toString()).toEqual(info[prop]);
@@ -58,7 +54,7 @@ describe("When given a move out input", () => {
             })
     }); 
     });
-    it("won't create a blue form if there is no room or cluster parameter", (done) => {
+    it("won't create a yellow form if there is no room or cluster parameter", (done) => {
         let info = {
           "name": "Jack",
           "cluster": "6",
@@ -67,7 +63,7 @@ describe("When given a move out input", () => {
           "laundry": "Yes",
           "agentmsg": "No charge"
         }
-        writeBlue(info, "01/01/2018", specpath, () => {
+        writeYellow(info, "01/01/2018", specpath, () => {
         let files = fs.readdirSync(specpath);
         expect(files.length).toEqual(0);
         files.forEach((file) => {
@@ -84,7 +80,7 @@ describe("When given a move out input", () => {
           "laundry": "Yes",
           "agentmsg": "No charge"
         }
-        expect(writeBlue(info, "01/01/2018", specpath)).toBe(false);
+        expect(writeYellow(info, "01/01/2018", specpath)).toBe(false);
         let files = fs.readdirSync(specpath);
         expect(files.length).toEqual(0);
         files.forEach((file) => {
@@ -92,7 +88,7 @@ describe("When given a move out input", () => {
         });
     });
     it("won't create a blue form or crash if not enough parameters are passed", () => {
-        expect(writeBlue()).toBe(false);
+        expect(writeYellow()).toBe(false);
         let files = fs.readdirSync(specpath);
         expect(files.length).toEqual(0);
         files.forEach((file) => {
