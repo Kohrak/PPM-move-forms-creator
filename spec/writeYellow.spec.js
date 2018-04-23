@@ -87,7 +87,7 @@ describe("When given a move out input", () => {
             fs.unlink(specpath + file);
         });
     });
-    it("won't create a blue form or crash if not enough parameters are passed", () => {
+    it("won't create a yellow form or crash if not enough parameters are passed", () => {
         expect(writeYellow()).toBe(false);
         let files = fs.readdirSync(specpath);
         expect(files.length).toEqual(0);
