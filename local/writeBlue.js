@@ -25,14 +25,10 @@ function writeBlue(info, dateval, path, next){
             "agentmsg": workbook.sheet("Sheet1").cell("B19")
           }
             // assign values from info to the cells in map
-            map.date.value(dateval);
-            map.name.value(info.name);
-            map.cluster.value(info.cluster);
-            map.room.value(info.room);
-            map.key.value(info.key);
-            map.car.value(info.car);
-            map.laundry.value(info.laundry);
-            map.agentmsg.value(info.agentmsg);
+            info.date = dateval;
+            for (let prop in map){
+              map[prop].value(info[prop]);
+            }
             // Creates the name using the provided data
             // format <cluster>.<room> Cleaning dd/mm/yy
             let name = info.cluster + "." + info.room +  " Cleaning " + dateval.replace(/[/]/g, ".");
