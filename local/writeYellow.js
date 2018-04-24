@@ -21,10 +21,10 @@ function writeYellow(info, dateval, path, next){
             "agentmsg": workbook.sheet("Sheet2").cell("A2")
           }
             // assign values from info to the cells in map
-            map.date.value(dateval);
-            map.cluster.value(info.cluster);
-            map.room.value(info.room);
-            map.agentmsg.value(info.agentmsg);
+            info.date = dateval;
+            for (let prop in map){
+              map[prop].value(info[prop]);
+            }
             // Creates the name using the provided data
             // format <cluster>.<room> Maintenance dd/mm/yy
             let name = info.cluster + "." + info.room +  " Maintenance " + dateval.replace(/[/]/g, ".");
